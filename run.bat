@@ -1,1 +1,1 @@
-node dist/index.js
+deno run -A dist/index.js

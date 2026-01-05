@@ -60,7 +60,7 @@ async function load_event() {
             const filePath = path.join(folderPath, file);
             const event = await import(pathToFileURL(filePath).href);
 
-            events.set(eventName + file.replace(".js", ""), event.execute);
+            events.set(eventName + "_" + file.replace(".js", ""), event);
         }
     }
 
@@ -72,7 +72,7 @@ load_event();
 const storage = new FileStorage("./storage.json");
 
 const client = new BaseClient({
-    device: "DESKTOPWIN",
+    device: "ANDROIDSECONDARY",
     storage: storage
 });
 
@@ -89,7 +89,7 @@ client.on("update:authtoken", async (authToken) => {
 });
 
 client.on("log", (data) => {
-    console.log(data.data);
+    // console.log(data.data);
 });
 
 const authToken = await storage.get(".auth");
