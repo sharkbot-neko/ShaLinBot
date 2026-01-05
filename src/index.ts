@@ -4,9 +4,9 @@ import dotenv from "dotenv";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import fs from "node:fs";
-import { setCommand } from "./temps/commands.js"
-import { setEvents } from "./temps/events.js"
-import handle_event from "./events/execute.js";
+import { setCommand } from "./temps/commands.ts"
+import { setEvents } from "./temps/events.ts"
+import handle_event from "./events/execute.ts";
 
 dotenv.config();
 
@@ -17,7 +17,7 @@ async function load_command() {
     let commands = new Map();
 
     const commandsPath = path.join(__dirname, 'commands');
-    const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+    const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.ts'));
 
     for (const file of commandFiles) {
         const filePath = path.join(commandsPath, file);
@@ -30,6 +30,7 @@ async function load_command() {
 
             if ("name" in command && "execute" in command) {
                 commands.set(command.name, command);
+                console.log(`${command.name} をロードしました。`)
             } else {
                 console.warn(`Warning: Command at ${filePath} is missing "name" or "execute".`);
             }
@@ -53,7 +54,7 @@ async function load_event() {
         const folderPath = path.join(eventsPath, folder);
         if (!fs.lstatSync(folderPath).isDirectory()) continue;
 
-        const eventFiles = fs.readdirSync(folderPath).filter(f => f.endsWith('.js'));
+        const eventFiles = fs.readdirSync(folderPath).filter(f => f.endsWith('.ts'));
         const eventName = folder;
 
         for (const file of eventFiles) {
@@ -61,6 +62,7 @@ async function load_event() {
             const event = await import(pathToFileURL(filePath).href);
 
             events.set(eventName + "_" + file.replace(".js", ""), event);
+            console.log(`${eventName + "_" + file.replace(".js", "")} をロードしました。`)
         }
     }
 
@@ -89,7 +91,7 @@ client.on("update:authtoken", async (authToken) => {
 });
 
 client.on("log", (data) => {
-    // console.log(data.data);
+    console.log(data.data);
 });
 
 const authToken = await storage.get(".auth");
@@ -107,6 +109,5 @@ if (typeof authToken === "string") {
 const polling = client.createPolling();
 
 for await (const op of polling.listenTalkEvents()) {
-    console.log(op)
     await handle_event(client, op);
 }

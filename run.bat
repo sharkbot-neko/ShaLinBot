@@ -1,1 +1,1 @@
-deno run -A dist/index.js
+deno run -A src/index.ts
