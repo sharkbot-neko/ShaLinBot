@@ -8,14 +8,23 @@ export default {
             chatMid: message.to
         })
 
-        if (chat.extra.groupExtra.creator != message.from) return;
+        try {
+            if (chat.extra.groupExtra.creator != message.from) return;
 
-        await role.add(message.to, message.from, "管理者");
+            await role.add(message.to, message.from, "管理者");
 
-        await client.talk.sendMessage({
-            to: message.to === client.profile?.mid ? message.from : message.to,
-            text: "セットアップをしました。\n・オーナーに管理者ロールを付与",
-            e2ee: !!op.message.chunks,
-        });
+            await client.talk.sendMessage({
+                to: message.to === client.profile?.mid ? message.from : message.to,
+                text: "セットアップをしました。\n・オーナーに管理者ロールを付与",
+                e2ee: !!op.message.chunks,
+            });
+        } catch {
+            await client.talk.sendMessage({
+                to: message.to === client.profile?.mid ? message.from : message.to,
+                text: "セットアップに失敗しました。\nセットアップはグループの中で実行してください。",
+                e2ee: !!op.message.chunks,
+            });
+            return;
+        }
     }
 }
