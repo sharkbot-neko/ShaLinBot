@@ -1,3 +1,4 @@
+import role from "../lib/role.ts";
 import prefix from "./../lib/prefixs.ts"
 
 export default {
@@ -6,7 +7,10 @@ export default {
         if (args.length < 1) {
             return;
         }
-        await prefix.set(message.from, args[0] as any);
+
+        if (await role.getPerm(message.to, message.from) < 10) return;
+
+        await prefix.set(message.to, args[0] as any);
 		await client.talk.sendMessage({
 			to: message.to === client.profile?.mid ? message.from : message.to,
 			text: "頭文字を変更しました。",

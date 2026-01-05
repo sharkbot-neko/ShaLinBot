@@ -21,6 +21,7 @@
     "@evex/linejs": "npm:@jsr/evex__linejs@^2.3.4",
     "@evex/linejs-types": "npm:@jsr/evex__linejs-types@^2.3.2-rc",
     "dotenv": "^17.2.3",
+    "mongodb": "^7.0.0",
     "sqlite3": "^5.1.7"
   },
   "type": "module",

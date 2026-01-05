@@ -354,6 +354,7 @@
         "npm:@jsr/evex__linejs@^2.3.4",
         "npm:@types/node@^25.0.3",
         "npm:dotenv@^17.2.3",
+        "npm:mongodb@7",
         "npm:sqlite3@^5.1.7"
       ]
     }

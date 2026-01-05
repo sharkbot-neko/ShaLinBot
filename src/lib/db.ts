@@ -1,7 +1,7 @@
-import { DatabaseSync } from "node:sqlite";
+import mongodb from "mongodb"; 
 
-export default function db() {
-    const db = new DatabaseSync("data.db");
+export var mongo: mongodb.MongoClient;
 
-    return db;
+export async function connect() {
+    mongo = await mongodb.MongoClient.connect("mongodb://127.0.0.1:27017");
 }

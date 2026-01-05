@@ -1,29 +1,37 @@
 import { DatabaseSync } from "node:sqlite";
-
-const db = new DatabaseSync("data.db");
-
-db.exec(`
-  CREATE TABLE IF NOT EXISTS prefix (
-    gid TEXT PRIMARY KEY,
-    prefix TEXT
-  )
-`);
+import { mongo } from "./db.ts"
 
 export default {
-    set: function (gid: string, prefix: string) {
-      const stmt = db.prepare("INSERT OR REPLACE INTO prefix (gid, prefix) VALUES (?, ?)");
-      stmt.run(gid, prefix);
+    set: async function (gid: string, prefix: string) {
+      const db = mongo.db("Line")
+      const collection = db.collection("Prefix");
+
+      await collection.updateOne({
+        "gid": gid
+      }, {
+        "$set": {
+          "prefix": prefix
+        }
+      }, {
+        upsert: true
+      })
     },
 
-    get: function (gid: string): string {
-      const stmt = db.prepare("SELECT prefix FROM prefix WHERE gid = ?");
-      const row = stmt.get(gid) as { prefix: string } | undefined;
-        
-      return row ? row.prefix : "!";
+    get: async function (gid: string): Promise<string> {
+      const db = mongo.db("Line")
+      const collection = db.collection("Prefix");
+      const find = await collection.findOne({gid: gid})
+
+      if (!find) return "!";
+
+      return find.prefix as string;
     },
 
     reset: function (gid: string) {
-      const stmt = db.prepare("DELETE FROM prefix WHERE gid = ?");
-      stmt.run(gid);
+      const db = mongo.db("Line")
+      const collection = db.collection("Prefix");
+      collection.deleteOne({
+        gid: gid
+      })
     }
 }

@@ -7,7 +7,7 @@ export default {
         const text = message.text?.trim();
         if (!text) return;
 
-        const prefix = message.from ? (prefixs.get(message.from) ?? "!") : "!";
+        const prefix = message.to ? (await prefixs.get(message.to) ?? "!") : "!";
 
         if (!text.startsWith(prefix)) return;
 
