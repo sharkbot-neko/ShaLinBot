@@ -1,0 +1,57 @@
+{
+  "lockfileVersion": 1,
+  "configVersion": 0,
+  "workspaces": {
+    "": {
+      "name": "shalinbot",
+      "dependencies": {
+        "@evex/linejs": "npm:@jsr/evex__linejs@^2.3.4",
+        "@evex/linejs-types": "npm:@jsr/evex__linejs-types@^2.3.2-rc",
+        "dotenv": "^17.2.3",
+        "undici": "^7.16.0",
+      },
+      "devDependencies": {
+        "@types/node": "^25.0.3",
+      },
+    },
+  },
+  "packages": {
+    "@evex/linejs": ["@jsr/evex__linejs@2.3.4", "https://npm.jsr.io/~/11/@jsr/evex__linejs/2.3.4.tgz", { "dependencies": { "@jsr/evex__linejs-types": "^2.3.4", "@jsr/evex__loose-types": "^1.0.1", "crypto-js": "^4.2.0", "curve25519-js": "^0.0.4", "node-bignumber": "^1.2.2", "node-int64": "^0.4.0", "thrift": "^0.20.0", "tweetnacl": "^1.0.3" } }, "sha512-I0KkNxilzwf2hANxtk74k0GU2K1CB5tCWuIMDFDPHeKKEqQ8zN8hqwvTrnVcV44exasY1Oids/fmHlUF5qwcoQ=="],
+
+    "@evex/linejs-types": ["@jsr/evex__linejs-types@2.3.2-rc", "https://npm.jsr.io/~/11/@jsr/evex__linejs-types/2.3.2-rc.tgz", {}, "sha512-PngsxJrU2BvaFbHl5RlnBHhDDHuUH63BVkohHwcZ2aqwA9LXyoNAKSXRHshw5ve1x/WbuXaXlDOBQ5U2YQNcwA=="],
+
+    "@jsr/evex__linejs-types": ["@jsr/evex__linejs-types@2.3.4", "https://npm.jsr.io/~/11/@jsr/evex__linejs-types/2.3.4.tgz", { "dependencies": { "@jsr/evex__loose-types": "^1.0.1" } }, "sha512-YukHLPDbrVZo6B/febyUiTL06adk/6SDGU+F+tdXsvBuQl4EmBV77LalzY6AO7y0XmWa5eh9HfqWgGxpcAfo5A=="],
+
+    "@jsr/evex__loose-types": ["@jsr/evex__loose-types@1.0.1", "https://npm.jsr.io/~/11/@jsr/evex__loose-types/1.0.1.tgz", {}, "sha512-ENNSHt+xHtkMJj+wp4dGWpLVY3J/BPSfXOo2u6ObFCuLN/hL71HUNQ/xB32jiqQj+u8nqWlGuenH1toFLDYM6Q=="],
+
+    "@types/node": ["@types/node@25.0.3", "", { "dependencies": { "undici-types": "~7.16.0" } }, "sha512-W609buLVRVmeW693xKfzHeIV6nJGGz98uCPfeXI1ELMLXVeKYZ9m15fAMSaUPBHYLGFsVRcMmSCksQOrZV9BYA=="],
+
+    "async-limiter": ["async-limiter@1.0.1", "", {}, "sha512-csOlWGAcRFJaI6m+F2WKdnMKr4HhdhFVBk0H/QbJFMCr+uO2kwohwXQPxw/9OCxp05r5ghVBFSyioixx3gfkNQ=="],
+
+    "browser-or-node": ["browser-or-node@1.3.0", "", {}, "sha512-0F2z/VSnLbmEeBcUrSuDH5l0HxTXdQQzLjkmBR4cYfvg1zJrKSlmIZFqyFR8oX0NrwPhy3c3HQ6i3OxMbew4Tg=="],
+
+    "crypto-js": ["crypto-js@4.2.0", "", {}, "sha512-KALDyEYgpY+Rlob/iriUtjV6d5Eq+Y191A5g4UqLAi8CyGP9N1+FdVbkc1SxKc2r4YAYqG8JzO2KGL+AizD70Q=="],
+
+    "curve25519-js": ["curve25519-js@0.0.4", "", {}, "sha512-axn2UMEnkhyDUPWOwVKBMVIzSQy2ejH2xRGy1wq81dqRwApXfIzfbE3hIX0ZRFBIihf/KDqK158DLwESu4AK1w=="],
+
+    "dotenv": ["dotenv@17.2.3", "", {}, "sha512-JVUnt+DUIzu87TABbhPmNfVdBDt18BLOWjMUFJMSi/Qqg7NTYtabbvSNJGOJ7afbRuv9D/lngizHtP7QyLQ+9w=="],
+
+    "isomorphic-ws": ["isomorphic-ws@4.0.1", "", { "peerDependencies": { "ws": "*" } }, "sha512-BhBvN2MBpWTaSHdWRb/bwdZJ1WaehQ2L1KngkCkfLUGF0mAWAT1sQUQacEmQ0jXkFw/czDXPNQSL5u2/Krsz1w=="],
+
+    "node-bignumber": ["node-bignumber@1.2.2", "", {}, "sha512-VoTZHmdFQpZH1+q1dz2qcHNCwTWsJg2T3PYwlAyDNFOfVhSYUKQBLFcCpCud+wJBGgCttGavZILaIggDIKqEQQ=="],
+
+    "node-int64": ["node-int64@0.4.0", "", {}, "sha512-O5lz91xSOeoXP6DulyHfllpq+Eg00MWitZIbtPfoSEvqIHdl5gfcY6hYzDWnj0qD5tz52PI08u9qUvSVeUBeHw=="],
+
+    "q": ["q@1.5.1", "", {}, "sha512-kV/CThkXo6xyFEZUugw/+pIOywXcDbFYgSct5cT3gqlbkBE1SJdwy6UQoZvodiWF/ckQLZyDE/Bu1M6gVu5lVw=="],
+
+    "thrift": ["thrift@0.20.0", "", { "dependencies": { "browser-or-node": "^1.2.1", "isomorphic-ws": "^4.0.1", "node-int64": "^0.4.0", "q": "^1.5.0", "ws": "^5.2.3" } }, "sha512-oSmJTaoIAGolpupVHFfsWcmdEKX81fcDI6ty0hhezzdgZvp0XyXgMe9+1YusI8Ahy0HK4n8jlNrkPjOPeHZjdQ=="],
+
+    "tweetnacl": ["tweetnacl@1.0.3", "", {}, "sha512-6rt+RN7aOi1nGMyC4Xa5DdYiukl2UWCbcJft7YhxReBGQD7OAM8Pbxw6YMo4r2diNEA8FEmu32YOn9rhaiE5yw=="],
+
+    "undici": ["undici@7.16.0", "", {}, "sha512-QEg3HPMll0o3t2ourKwOeUAZ159Kn9mx5pnzHRQO8+Wixmh88YdZRiIwat0iNzNNXn0yoEtXJqFpyW7eM8BV7g=="],
+
+    "undici-types": ["undici-types@7.16.0", "", {}, "sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw=="],
+
+    "ws": ["ws@5.2.4", "", { "dependencies": { "async-limiter": "~1.0.0" } }, "sha512-fFCejsuC8f9kOSu9FYaOw8CdO68O3h5v0lg4p74o8JqWpwTf9tniOD+nOB78aWoVSS6WptVUmDrp/KPsMVBWFQ=="],
+  }
+}

@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/sharkbot-neko/ShaLinBot#readme",
   "dependencies": {
-    "@evex/linejs": "npm:@jsr/evex__linejs@^2.3.2-rc",
+    "@evex/linejs": "npm:@jsr/evex__linejs@^2.3.4",
+    "@evex/linejs-types": "npm:@jsr/evex__linejs-types@^2.3.2-rc",
     "dotenv": "^17.2.3"
   },
   "type": "module",

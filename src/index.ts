@@ -1,9 +1,9 @@
 import { BaseClient } from "@evex/linejs/base";
 import { FileStorage } from "@evex/linejs/storage";
 import dotenv from "dotenv";
-import path from "path";
-import { fileURLToPath, pathToFileURL } from "url";
-import fs from "fs";
+import path from "node:path";
+import { fileURLToPath, pathToFileURL } from "node:url";
+import fs from "node:fs";
 import { setCommand } from "./temps/commands.js"
 import { setEvents } from "./temps/events.js"
 import handle_event from "./events/execute.js";
@@ -88,6 +88,10 @@ client.on("update:authtoken", async (authToken) => {
     await storage.set(".auth", authToken);
 });
 
+client.on("log", (data) => {
+    console.log(data.data);
+});
+
 const authToken = await storage.get(".auth");
 if (typeof authToken === "string") {
     await client.loginProcess.login({
@@ -103,5 +107,6 @@ if (typeof authToken === "string") {
 const polling = client.createPolling();
 
 for await (const op of polling.listenTalkEvents()) {
+    console.log(op)
     await handle_event(client, op);
 }
