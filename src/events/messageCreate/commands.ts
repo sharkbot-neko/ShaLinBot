@@ -7,8 +7,6 @@ export default {
         const text = message.text?.trim();
         if (!text) return;
 
-        console.log(text)
-
         const prefix = message.from ? (prefixs.get(message.from) ?? "!") : "!";
 
         if (!text.startsWith(prefix)) return;
