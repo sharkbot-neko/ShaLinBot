@@ -100,7 +100,7 @@ client.on("update:authtoken", async (authToken) => {
 });
 
 client.on("log", (data) => {
-    console.log(data.data);
+    // console.log(data.data);
 });
 
 const authToken = await storage.get(".auth");
