@@ -7,6 +7,8 @@ export default {
         
         if (!gid || !uid) return;
 
+        if (uid == client.profile.mid) return;
+
         const is_enable = await protect.isEnableProtect(gid, "gname");
 
         if (!is_enable) return;
