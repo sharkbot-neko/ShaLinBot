@@ -7,6 +7,8 @@ export default {
         const text = message.text?.trim();
         if (!text) return;
 
+        if (message.from == client.profile.mid) return;
+
         const prefix = message.to ? (await prefixs.get(message.to) ?? "!") : "!";
 
         if (!text.startsWith(prefix)) return;
