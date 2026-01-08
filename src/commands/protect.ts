@@ -38,7 +38,7 @@ export default {
                 text: "保護を有効化しました。",
                 e2ee: !!op.message.chunks,
             });
-        } else if (args[0] == "remove") {
+        } else if (args[0] == "disable") {
             if (args.length < 2) {
                 return;
             }

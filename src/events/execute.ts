@@ -10,13 +10,20 @@ export default async function handle_event(client: any, op: any) {
             }
         })
 	} else if (op.type === "NOTIFIED_JOIN_CHAT") {
-        // ここに参加ログ
+		events.forEach(async (value: any, key: string) => {
+            if (key.startsWith("memberJoin")) {
+                await value.default.execute(client, op)
+            }
+        })
+        console.log(op);
     } else if (op.type === "NOTIFIED_UPDATE_CHAT") {
 		events.forEach(async (value: any, key: string) => {
             if (key.startsWith("groupUpdate")) {
                 await value.default.execute(client, op)
             }
         })
+    } else if (op.type === "DELETE_OTHER_FROM_CHAT") {
+        // ここに蹴ったときのメッセージなどを追加
     } else {
         console.log(op);
     }
