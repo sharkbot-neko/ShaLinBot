@@ -9,6 +9,7 @@ import { setEvents } from "./temps/events.ts"
 import handle_event from "./events/execute.ts";
 import { connect } from "./lib/db.ts";
 import { createRole } from "./lib/defaultRoles.ts"
+import process from "node:process";
 
 // ロール作成
 createRole("管理者", 10);
