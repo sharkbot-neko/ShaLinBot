@@ -1,0 +1,6 @@
+services:
+  bot:
+    build: .
+    ports:
+      - "3003:3003"
+    # restart: always 
