@@ -3,9 +3,9 @@ import dotenv
 from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
-from linebot.models import MessageEvent, TextMessage, TextSendMessage
+from linebot.models import MessageEvent, SourceUser, TextMessage, TextSendMessage
 
-from commands import news, omikuji, dice, hello
+from commands import news, omikuji, dice, hello, afk
 
 dotenv.load_dotenv()
 
@@ -17,7 +17,7 @@ YOUR_CHANNEL_SECRET = os.environ.get('CHANNEL_SECRETS')
 line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
-commands = [hello.process, news.process, omikuji.process, dice.process]
+commands = [hello.process, news.process, omikuji.process, dice.process, afk.process]
 
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -38,10 +38,11 @@ def handle_message(event: MessageEvent):
         if check:
             return
 
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text="「初めに」って送ってみてね！")
-    )
+    if isinstance(event.source, SourceUser):
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="「初めに」って送ってみてね！")
+        )
 
 if __name__ == "__main__":
     app.run(port=3003)
